@@ -1,0 +1,28 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import numpy as np
+np.random.seed(42)
+data=pd.DataFrame({'value':np.random.normal(size=300),'category':np.random.choice(['a','b','c'],size=300)})
+g=sns.FacetGrid(data,col="category",col_wrap=3)
+g.map(sns.histplot,"value")
+plt.show()
+plt.figure(figsize=(10,6))
+sns.boxplot(x='category',y='value',data=data)
+plt.title('box plot')
+plt.xlabel('category')
+plt.ylabel('value')
+plt.show()
+plt.figure(figsize=(10,6))
+sns.stripplot(x='category',y='value',data=data,jitter=True)
+sns.boxplot(data)
+plt.title('Strip  plot')
+plt.xlabel('Caregory')
+plt.ylabel('Value')
+plt.show()
+plt.figure(figsize=(10,6))
+sns.violinplot(x='category',y='value',data=data)
+plt.title('violin plot')
+plt.xlabel('category')
+plt.ylabel('value')
+plt.show()
